@@ -13,7 +13,7 @@ public class Employee {
     private double tax(){
         double tax=0;
         if (this.salary>=1000){
-            tax=this.salary*0.3;
+            tax=this.salary*0.03;
         }
         return tax;
     }
@@ -23,16 +23,6 @@ public class Employee {
             bonus=(this.workHours-40)*30;
         }
         return bonus;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", salary=" + salary +
-                ", workHours=" + workHours +
-                ", hireYear=" + hireYear +
-                '}';
     }
 
     private double raiseSalary(){
@@ -46,5 +36,18 @@ public class Employee {
             return totalSalary*0.15;
         }
     }
-
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", salary=" + salary +
+                ", workHours=" + workHours +
+                ", hireYear=" + hireYear +
+                ", tax=" + this.tax() +
+                ", bonus=" + this.bonus() +
+                ", raiseSalary=" +this.raiseSalary() +
+                ", totalSalary=" + (this.bonus()+salary) +
+                ", totalSalaryWithTax=" +(this.bonus()-this.tax()+salary) +
+                '}';
+    }
 }
