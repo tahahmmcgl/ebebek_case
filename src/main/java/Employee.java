@@ -25,9 +25,10 @@ public class Employee {
         return bonus;
     }
 
+    // Eğer bonus ve tax totalSalary'e katılsaydı discord sunucusunda istenen değerler olmamış olacaktı.
     private double raiseSalary(){
-        int year=2021-this.hireYear;
-        double totalSalary=(this.salary-this.tax()+this.bonus());
+        int year=(2021-hireYear);
+        double totalSalary=(salary);
         if (year<10){
             return totalSalary*0.05;
         } else if (year>=10 && year<20) {
@@ -36,18 +37,19 @@ public class Employee {
             return totalSalary*0.15;
         }
     }
+
     @Override
     public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", salary=" + salary +
-                ", workHours=" + workHours +
-                ", hireYear=" + hireYear +
-                ", tax=" + this.tax() +
-                ", bonus=" + this.bonus() +
-                ", raiseSalary=" +this.raiseSalary() +
-                ", totalSalary=" + (this.bonus()+salary) +
-                ", totalSalaryWithTax=" +(this.bonus()-this.tax()+salary) +
-                '}';
+        double totalSalary=(salary-this.tax()+this.bonus()+this.raiseSalary());
+        double totalSalaryWithTaxandBonus=salary-this.tax()+this.bonus();
+        return  "Ad : " + name + '\n' +
+                "Maaş : " + salary +'\n'+
+                "Çalışma Saati : " + workHours +'\n'+
+                "Başlangıç Yılı : " + hireYear +'\n'+
+                "Vergi : "+ this.tax()+'\n'+
+                "Bonus : "+ this.bonus()+'\n'+
+                "Maaş Artışı : "+this.raiseSalary()+'\n'+
+                "Vergi ve Bonuslar ile birlikte maaş : "+ totalSalaryWithTaxandBonus+'\n'+
+                "Toplam Maaş : "+ totalSalary;
     }
 }
